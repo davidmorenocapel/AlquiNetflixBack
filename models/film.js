@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     id: DataTypes.INTEGER,
     title: DataTypes.STRING,
     genre: DataTypes.STRING,
-    image: DataTypes.INTEGER,
+    image: DataTypes.STRING,
     status: DataTypes.BOOLEAN
   }, {});
   Film.associate = function(models) {
