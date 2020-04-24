@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { film } = require ('../models/film.js')
+const { Film } = require ('../models/index')
 
 router.get('/', (req, res) => {
-    film.findAll()
+    Film.findAll()
     .then(films => res.send(films))
     .catch(err => {
         console.log(err)
