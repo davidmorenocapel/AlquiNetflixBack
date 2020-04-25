@@ -46,6 +46,15 @@ const pageController = {
             }
         });
         res.send(filmsStatus);
+    },
+    async filmByTitle(req,res){
+        let title = req.params.title;
+        const filmByTitle = await Film.findOne({
+            where: {
+                title: title
+            }
+        });
+        res.send(filmByTitle);
     }
 
 }
