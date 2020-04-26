@@ -64,6 +64,20 @@ const userController = {//
             }
         });
         res.send({mensaje: 'Usuario eliminado'})
+    },
+    async editUser(req,res){
+        let body =  req.body;
+        let _id = req.params.id;
+        const edit = await User.update({
+            name: body.name,
+            surname: body.surname,
+            password: body.password
+        },{
+        where: {
+            id: _id
+        }
+        })
+        res.send({mensaje: 'Usuario actualizado', edit})
     }
 }
 
