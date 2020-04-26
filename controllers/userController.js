@@ -16,6 +16,7 @@ const userController = {//
     },*/
     async usersList(req,res){
         const users = await User.findAll({
+            attributes: {exclude:['password']}
         });
         res.send(users);
     },
@@ -23,6 +24,7 @@ const userController = {//
         try{
         let id = req.params.id;
         const user = await User.findOne({
+            attributes: {exclude:['password']},
             where: {
                 id: id
             }
@@ -66,3 +68,9 @@ const userController = {//
 }
 
 module.exports = userController;
+
+/*
+Model.findAll({
+    attributes: { exclude: ['baz'] }
+  });
+  */
