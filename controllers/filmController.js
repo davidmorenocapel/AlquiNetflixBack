@@ -14,18 +14,17 @@ const pageController = {
     },
     async filmID(req,res){
         try{
-        let id = req.params.id;
-        console.log(id);
+        let _id = req.params.id;
         const film = await Film.findOne({
             where: {
-                id: id
+                id: _id
             }
         })
         res.send(film)
     }
     catch (error) {
         console.error(error)
-        res.status(500).send({ message: 'me recontracaguendios y la reputisima madre que lo pario ' })
+        res.status(500).send({ message: 'Pues va a ser que no sale na, has puesto bien servers y xamp? ' })
     }
     },
 
