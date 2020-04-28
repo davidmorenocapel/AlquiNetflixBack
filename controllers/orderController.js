@@ -18,6 +18,19 @@ const orderController = {//
         const orders = await Order.findAll({
         });
         res.send(orders);
+    },
+    orderByUserId(req, res){
+        let { id } = req.params;
+        Order.findOne({ 
+            include: [ 
+                { model: Film,
+                    include: { model: title,
+                    } },
+                { model: User      
+                }    
+            ],
+        });
+        res.send(orderByUserId)
     }
 }
 
