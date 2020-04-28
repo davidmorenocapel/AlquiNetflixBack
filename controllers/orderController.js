@@ -1,10 +1,8 @@
 
-const { Order } = require('../models/index'); //requerir la tabla
-const db = require('../models/index');
+const { Order, Film, User } = require('../models/index'); //requerir la tabla
+//const db = require('../models/index');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
-
 
 const orderController = {//
 
@@ -21,16 +19,18 @@ const orderController = {//
     },
     orderByUserId(req, res){
         let { id } = req.params;
-        Order.findOne({ 
+        Order.findAll({ 
             include: [ 
-                { model: Film,
-                    include: { model: title,
-                    } },
-                { model: User      
+                { model: Film
+                },                    
+                { model: User,
+                    where: { id }
                 }    
             ],
-        });
-        res.send(orderByUserId)
+        })// agrupamos los pedidos en allOrders, y eso se lo pasamos a la funcion
+        .then(allOrders => {
+            res.send(allOrders)
+         })
     }
 }
 

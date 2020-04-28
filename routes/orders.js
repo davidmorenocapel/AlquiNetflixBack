@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-const ordersController = require('../controllers/orderController');
+const orderController = require('../controllers/orderController');
 
-router.get('/', ordersController.orderList);
-router.get('/orderByUserId/:id', ordersController.orderByUserId);
+router.get('/', orderController.orderList);
+router.get('/orderByUserId/:id', orderController.orderByUserId);
 
 
 
