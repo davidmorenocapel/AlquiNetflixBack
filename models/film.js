@@ -6,8 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     status: DataTypes.BOOLEAN
   }, {});
-  Film.associate = function(models) {
     // associations can be defined here
+  Film.associate = function(models) {
+  Film.hasMany(models.Order)
   };
   return Film ;
 };
