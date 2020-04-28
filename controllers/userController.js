@@ -82,9 +82,3 @@ const userController = {//
 }
 
 module.exports = userController;
-
-/*
-Model.findAll({
-    attributes: { exclude: ['baz'] }
-  });
-  */
