@@ -10,5 +10,8 @@ router.delete('/deletebyid/:id', usersController.deleteUserByID);
 router.delete('/deletebyemail/:email', usersController.deleteUserByEmail);
 router.put('/edit/:id', usersController.editUser);
 
+router.post('/login', usersController.login);
+
+
 
 module.exports = router;

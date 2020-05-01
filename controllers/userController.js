@@ -1,8 +1,9 @@
-
-const { User } = require('../models/index'); //requerir la tabla
+const { User, Token } = require('../models/index'); //requerir la tabla
 const db = require('../models/index');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
 
@@ -36,18 +37,51 @@ const userController = {//
         res.status(500).send({ message: 'Pues va a ser que no sale na, has puesto bien servers y xamp? ' })
     }
     },
-    async newUser(req, res){
+    async newUser(req,res){
+        try {
+         const hash = await bcrypt.hash(req.body.password,10)
+         const user = await User.create({
+             ...req.body,
+             password:hash
+         })
+          res.send(user);
+          res.send
+        } catch (error) {
+         console.log(error)
+         res.status(200).send({mensaje: 'Usuario creado'})
+        }
+    },
+    // para el postman
+    /*async newUser(req, res){
         await User.create({
             email: req.body.email,
             password: req.body.password,
             name: req.body.name,
             surname: req.body.surname
-           /*password: bcrypt.hashSync(req.body.password, 10),
-           rol: req.body.rol*/
        })
        res.status(200).send({mensaje: 'Usuario creado'})
-   },
-       async deleteUserByID(req,res){
+    },*/
+    login(req,res){
+        User.findOne({
+            where:{
+                username:req.body.username
+            }
+        }).then(user=>{
+            if(!user){
+                return res.status(400).send({message:"Usuario o contraseña incorrectos"})
+            }
+          bcrypt.compare(req.body.password,user.password).then(isMatch=>{
+            if(!isMatch){
+                return res.status(400).send({message:"Usuario o contraseña incorrectos"})
+            } 
+            const token = jwt.sign({id:user.id}, /*'mimamaMeMima'*/'FirmameAqui' , {expiresIn:'2w'} );
+            Token.create({token,UserId:user.id});//añadimos el token al final del array
+            res.send({message:'Welcome, ', user,token});
+          });
+        })
+    },
+   
+    async deleteUserByID(req,res){
         let _id = req.params.id;
         const deleteUserById = await User.destroy({
             where:{
@@ -78,7 +112,8 @@ const userController = {//
         }
         })
         res.send({mensaje: 'Usuario actualizado', edit})
-    }
+    },
+
 }
 
 module.exports = userController;
