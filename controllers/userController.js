@@ -64,7 +64,7 @@ const userController = {//
     login(req,res){
         User.findOne({
             where:{
-                username:req.body.username
+                name:req.body.name
             }
         }).then(user=>{
             if(!user){
