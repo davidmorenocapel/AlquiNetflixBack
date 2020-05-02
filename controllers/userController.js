@@ -17,7 +17,9 @@ const userController = {//
     },*/
     async usersList(req,res){
         const users = await User.findAll({
-            attributes: {exclude:['password']}
+        //    attributes: {exclude:['password']},
+            include: Token
+        
         });
         res.send(users);
     },
@@ -61,24 +63,28 @@ const userController = {//
        })
        res.status(200).send({mensaje: 'Usuario creado'})
     },*/
-    login(req,res){
-        User.findOne({
+     async login(req,res){
+    try {const user = await User.findOne({
             where:{
-                name:req.body.name
+                email:req.body.email,
             }
-        }).then(user=>{
+        });
             if(!user){
-                return res.status(400).send({message:"Usuario o contraseña incorrectos"})
+                return res.status(400).send({message:"Email o contraseña incorrectos"})
             }
-          bcrypt.compare(req.body.password,user.password).then(isMatch=>{
+        const isMatch = await bcrypt.compare(req.body.password,user.password)
             if(!isMatch){
-                return res.status(400).send({message:"Usuario o contraseña incorrectos"})
+                return res.status(400).send({message:"Email o contraseña maaaaaaaaaaaaaal"})
             } 
-            const token = jwt.sign({id:user.id}, /*'mimamaMeMima'*/'FirmameAqui' , {expiresIn:'2w'} );
-            Token.create({token,UserId:user.id});//añadimos el token al final del array
-            res.send({message:'Welcome, ', user,token});
-          });
-        })
+            const token = jwt.sign({id:user.id}, 'TuClaveAquiLadron' , {expiresIn:'2w'} );
+            Token.create({token,UserId:user.id});
+            res.send({message:`welcome ${user.name}` , user,token});
+        }
+         catch(error) {
+            console.log(error)
+            res.status(200).send({mensaje: 'Usuario creado'})
+           }
+        
     },
    
     async deleteUserByID(req,res){
