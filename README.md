@@ -8,13 +8,13 @@ Este es el backend del proyecto de "Classic Netflix", una web para alquiler de p
 
 ## Tecnologías usadas e instalación
 
-* express
-* mysql2
-* nodemon
-* sequelize
-* bcryptjs
-* cors
-* jsonwebtoken
+* [express](https://expressjs.com/es/api.html) <--- Link a la documentación
+* [mysql2] (https://dev.mysql.com/doc/) <--- Link a la documentación
+* [nodemon](https://nodemon.io/) <--- Link a la documentación
+* [sequelize](https://sequelize.org/) <--- Link a la documentación
+* [bcryptjs](https://www.npmjs.com/package/bcrypt) <--- Link a la documentación
+* [cors](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS) <--- Link a la documentación
+* [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) <--- Link a la documentación
 
 > npm i
 
@@ -22,11 +22,11 @@ ejecuta este comando tras la descarga o clonación para que el proyecto funcione
 
 ## Diseño del backend (modelos)
 
-Los datos se distribuyen en 4 tablas: FILMS, USERS, ORDERS (resultante de la relacion entre FILMS y USERS de muchos a muchos) y TOKENS (necesaria para la creacion y almacenamiento de los tokens de usuario para el login de las sesiones).
+Los datos se distribuyen en 4 tablas: FILMS, USERS, ORDERS (resultante de la relación entre FILMS y USERS de muchos a muchos) y TOKENS (necesaria para la creación y almacenamiento de los tokens de usuario para el login de las sesiones).
 
 ![image](./resources/tablas.JPG)
 
-## Uso de SEQUELIZE para las consultas a la base de datos y envio al frontend (vistas y controladores)
+## Uso de SEQUELIZE para las consultas a la base de datos y envío al frontend (vistas y controladores)
 
 Raíces de las rutas para los endpoints necesarios en el front
 
@@ -44,9 +44,9 @@ router.get('/', usersController.usersList);
 
 ![image](./resources/usuarios.JPG)
 
-Ejemplo con modificacion de usuarios:
+Ejemplo con modificación de usuarios:
 
-Ejemplo con TOKEN, y su codigo de codificacion de la contraseña:
+Ejemplo con TOKEN, y su código de codificación de la contraseña:
 
 >router.post('/login', usersController.login);
 
