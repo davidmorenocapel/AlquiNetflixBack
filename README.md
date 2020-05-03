@@ -83,7 +83,7 @@ Ejemplo con FILMS:
 
 >router.get('/', pageController.filmsList);
 
-![image](./resources/pelis.jpg)
+![image](./resources/pelis.JPG)
 
 ---
 
