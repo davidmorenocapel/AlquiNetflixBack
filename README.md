@@ -9,7 +9,7 @@ Este es el backend del proyecto de "Classic Netflix", una web para alquiler de p
 ## Tecnologías usadas e instalación
 
 * [express](https://expressjs.com/es/api.html) <--- Link a la documentación
-* [mysql2] (https://dev.mysql.com/doc/) <--- Link a la documentación
+* [mysql2](https://dev.mysql.com/doc/) <--- Link a la documentación
 * [nodemon](https://nodemon.io/) <--- Link a la documentación
 * [sequelize](https://sequelize.org/) <--- Link a la documentación
 * [bcryptjs](https://www.npmjs.com/package/bcrypt) <--- Link a la documentación
