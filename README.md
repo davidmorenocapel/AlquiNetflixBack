@@ -24,7 +24,7 @@ ejecuta este comando tras la descarga o clonación para que el proyecto funcione
 
 Los datos se distribuyen en 4 tablas: FILMS, USERS, ORDERS (resultante de la relacion entre FILMS y USERS de muchos a muchos) y TOKENS (necesaria para la creacion y almacenamiento de los tokens de usuario para el login de las sesiones).
 
-![image](./resources/tablas.jpg)
+![image](./resources/tablas.JPG)
 
 ## Uso de SEQUELIZE para las consultas a la base de datos y envio al frontend (vistas y controladores)
 
@@ -42,7 +42,7 @@ Ejemplos /USERS:
 
 router.get('/', usersController.usersList);
 
-![image](./resources/usuarios.jpg)
+![image](./resources/usuarios.JPG)
 
 Ejemplo con modificacion de usuarios:
 
@@ -77,7 +77,7 @@ async login(req,res){
 
 >router.put('/edit/:id', usersController.editUser);
 
-![image](./resources/put.jpg)
+![image](./resources/put.JPG)
 
 Ejemplo con FILMS:
 
