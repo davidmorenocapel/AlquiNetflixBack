@@ -63,7 +63,7 @@ const userController = {//
        })
        res.status(200).send({mensaje: 'Usuario creado'})
     },*/
-     async login(req,res){
+    async login(req,res){
     try {const user = await User.findOne({
             where:{
                 email:req.body.email,
