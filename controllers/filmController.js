@@ -71,7 +71,7 @@ const pageController = {
           res.send
         } catch (error) {
          console.log(error)
-         res.status(200).send({mensaje: 'Pelicula creado'})
+         res.status(200).send({mensaje: 'Error!!!!'})
         }
     }
 }

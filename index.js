@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-//La ruta que pongamos aqui, sera la raiz en el archivo que requitamos
+//La ruta que pongamos aqui, sera la raiz en el archivo que requiramos
 app.use('/films', require('./routes/films'));
 app.use('/users', require('./routes/users'));
 app.use('/orders', require('./routes/orders'));
