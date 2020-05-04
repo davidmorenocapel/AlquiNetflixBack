@@ -37,6 +37,15 @@ const pageController = {
         });
         res.send(filmsGenre);
     },
+    async filmByRating(req,res){
+        let rating = req.params.rating;
+        const filmsByRating = await Film.findAll({
+            where: {
+                rating: rating
+            }
+        });
+        res.send(filmsByRating);
+    },
     async filmByStatus(req,res){
         let status = req.params.status;
         const filmsStatus = await Film.findOne({
