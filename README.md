@@ -64,7 +64,7 @@ async login(req,res){
             if(!isMatch){
                 return res.status(400).send({message:"Email o contraseña maaaaaaaaaaaaaal"})
             } 
-            const token = jwt.sign({id:user.id}, 'TuClaveAquiLadron' , {expiresIn:'2w'} );
+            const token = jwt.sign({id:user.id}, '**********************' , {expiresIn:'2w'} );
             Token.create({token,UserId:user.id});
             res.send({message:`welcome ${user.name}` , user,token});
         }
