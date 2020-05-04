@@ -54,8 +54,26 @@ const pageController = {
             }
         });
         res.send(filmByTitle);
+    },
+    async newFilm(req,res){
+        try {
+         const film = await Film.create({
+            id: req.body.id,
+            title: req.body.title,
+            genre: req.body.genre,
+            image: req.body.image,
+            status: req.body.status,
+            description: req.body.description,
+            createdAt: req.body.createdAt,
+            updatedAt: req.body.updatedAt
+         })
+          res.send(film);
+          res.send
+        } catch (error) {
+         console.log(error)
+         res.status(200).send({mensaje: 'Pelicula creado'})
+        }
     }
-
 }
 
 module.exports = pageController;

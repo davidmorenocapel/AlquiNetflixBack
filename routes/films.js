@@ -9,4 +9,6 @@ router.get('/genre/:genre', pageController.filmByGenre);
 router.get('/status/:status', pageController.filmByStatus);
 router.get('/title/:title', pageController.filmByTitle);
 
+router.post('/newfilm', pageController.newFilm);
+
 module.exports = router;
