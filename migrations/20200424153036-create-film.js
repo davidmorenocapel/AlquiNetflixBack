@@ -20,7 +20,7 @@ module.exports = {
       status: {
         type: Sequelize.BOOLEAN
       },
-      descrpition: {
+      description: {
         type: Sequelize.STRING
       },
       createdAt: {
