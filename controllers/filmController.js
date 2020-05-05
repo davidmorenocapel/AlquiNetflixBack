@@ -56,11 +56,13 @@ const pageController = {
         res.send(filmsStatus);
     },
     async filmByTitle(req,res){
-        let title = req.params.title;
-        const filmByTitle = await Film.findOne({
-            where: {
-                title: title
-            }
+        let _title = req.params.title;
+        const filmByTitle = await Film.findAll({
+                where: {
+                    title: {[Op.like]: '%'+ _title +'%'}
+
+                }
+
         });
         res.send(filmByTitle);
     },
